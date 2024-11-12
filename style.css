@@ -1,0 +1,206 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(228, 223, 216);
+  margin: 0;
+  padding: 0;
+}
+
+header,
+footer {
+  background-color: #2539cd;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #bac7cf;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 2%;
+  border: 1px solid #060505;
+  width: 65%; /* Disminuir el ancho del modal en pantallas pequeñas */
+  max-width: 550px; /* Limitar ancho máximo */
+}
+
+#productList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  margin: 0; /* Cambiar a 0 para evitar problemas de márgenes */
+}
+
+.product {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 15px;
+  flex: 1 1 calc(18% - 20px); /* Permite que cada producto se ajuste automáticamente */
+  max-width: 300px; /* Limita el ancho máximo para que no se estiren demasiado */
+  height: 300px; /* Alto fijo */
+  text-align: center;
+  background-color: white;
+  display: flex; /* Facilitando la alineación del contenido */
+  flex-direction: column; /* Organizando contenido verticalmente */
+  justify-content: center; /* Centrando contenido verticalmente */
+  align-items: center; /* Centrando contenido horizontalmente */
+}
+
+.product img {
+  width: 100%; /* Ajusta el ancho al 100% del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+  max-height: 150px; /* Establece una altura máxima para asegurarse de que no desborde el contenedor */
+  object-fit: contain; /* Asegura que la imagen se ajuste al contenedor sin distorsionarse */
+  border-radius: 5px 5px 0 0; /* Mantiene el borde redondeado en la parte superior */
+}
+
+.product h3 {
+  margin: 5px 0; /* Ajustando márgenes */
+}
+
+.product p {
+  margin: 5px 0; /* Ajustando márgenes */
+}
+
+button {
+  background-color: #687a68;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.close {
+  color: #2e2b2b;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-links {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 70px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.nav-links {
+  flex: 1;
+  text-align: center;
+}
+
+.nav-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.iconos {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.filter-icon {
+  width: 20px; /* Ajusta el tamaño según sea necesario */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+.filters-button {
+  background-color: #4b666e; /* Cambia a tu color deseado */
+  border: none; /* Sin borde, si lo deseas */
+  padding: 10px; /* Espacio interior */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  border-radius: 50%; /* Hace que el botón sea redondo */
+  width: 30px; /* Ancho fijo para que sea un círculo */
+  height: 30px; /* Altura acorde para que sea un círculo */
+  display: flex; /* Usado para centrar el contenido */
+  align-items: center; /* Centra el icono verticalmente */
+  justify-content: center; /* Centra el icono horizontalmente */
+}
+.icon {
+  display: flex; /* Usado para centrar el contenido */
+  align-items: center; /* Centra el icono verticalmente */
+  justify-content: center; /* Centra el icono horizontalmente */
+  width: 30px; /* Ancho para un círculo */
+  height: 30px; /* Altura para un círculo */
+  background-color: #4b666e; /* Color de fondo, personaliza si es necesario */
+  color: white; /* Color del icono */
+  border-radius: 50%; /* Hace que los iconos sean redondos */
+  text-decoration: none; /* Quita subrayado del enlace */
+  margin: 5px; /* Espacio entre iconos */
+}
+
+.icon:hover {
+  background-color: #45a049; /* Cambia el color de fondo al pasar el mouse */
+}
+
+.buy-link {
+  display: inline-block;
+  margin-top: 10px; /* Espacio encima del enlace */
+  text-decoration: none; /* Quitar subrayado por defecto */
+  color: #4b666e; /* Color del enlace */
+  font-weight: bold; /* Hacer el texto en negrita */
+  border: 1px solid #4b666e; /* Borde alrededor del enlace */
+  padding: 5px 10px; /* Espaciado interior */
+  border-radius: 5px; /* Esquinas redondeadas */
+  transition: background-color 0.3s; /* Transición suave para el efecto hover */
+}
+
+.buy-link:hover {
+  background-color: #4b666e; /* Cambiar color de fondo al pasar el mouse */
+  color: white; /* Cambiar color del texto al pasar el mouse */
+}
+
+footer {
+  display: flex;
+  flex-direction: column; /* Cambia a columna para móviles */
+  align-items: center; /* Centraliza los ítems */
+}
+@media (max-width: 768px) {
+  .product {
+    flex: 1 1 calc(45% - 20px); /* Dos productos por fila en tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .product {
+    flex: 1 1 100%; /* Un producto por fila en móviles */
+  }
+}
