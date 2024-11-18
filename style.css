@@ -26,13 +26,30 @@ footer {
 }
 
 .modal-content {
+  /* Tus estilos actuales para el modal-content */
   background-color: #bac7cf;
   margin: 15% auto;
   padding: 20px;
   border-radius: 2%;
   border: 1px solid #060505;
-  width: 65%; /* Disminuir el ancho del modal en pantallas pequeñas */
-  max-width: 550px; /* Limitar ancho máximo */
+  width: 80%;
+  max-width: 250px;
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se reposicionen si es necesario en pantallas pequeñas */
+  flex-direction: column;
+}
+.modal-content label {
+  margin: 5px 0; /* Ajusta el margen para reducir espacio */
+}
+
+.modal-content select,
+.modal-content input {
+  height: 30px; /* Ajusta la altura de los campos de entrada y select */
+  padding: 5px; /* Reduce el padding para que queden más compactos */
+}
+
+.modal-content button {
+  height: 30px; /* Ajusta la altura del botón */
 }
 
 #productList {
@@ -68,10 +85,7 @@ footer {
   border-radius: 5px 5px 0 0; /* Mantiene el borde redondeado en la parte superior */
 }
 
-.product h3 {
-  margin: 5px 0; /* Ajustando márgenes */
-}
-
+.product h3,
 .product p {
   margin: 5px 0; /* Ajustando márgenes */
 }
@@ -120,17 +134,27 @@ button {
   margin-right: 20px;
 }
 
+/* Estilos generales para la barra de navegación */
 .nav-links {
-  flex: 1;
-  text-align: center;
+  display: flex;
+  justify-content: center; /* Centra los enlaces en la barra */
+  margin-left: 50px;
+  flex-wrap: wrap; /* Permite que los enlaces se envuelvan si no hay suficiente espacio */
 }
 
 .nav-links a {
-  margin: 0 10px;
+  margin: 0 15px; /* Espaciado entre los enlaces */
   text-decoration: none;
   color: white;
+  font-weight: bold; /* Hace que los enlaces se destaquen */
+  transition: color 0.3s; /* Animación suave para el cambio de color */
 }
 
+.nav-links a:hover {
+  color: #d1d1d1; /* Cambia el color al pasar el mouse */
+}
+
+/* Estilo de iconos */
 .iconos {
   display: flex;
   align-items: center;
@@ -141,7 +165,6 @@ button {
   width: 20px; /* Ajusta el tamaño según sea necesario */
   height: auto; /* Mantiene la proporción de la imagen */
 }
-
 .filters-button {
   background-color: #4b666e; /* Cambia a tu color deseado */
   border: none; /* Sin borde, si lo deseas */
@@ -189,10 +212,32 @@ button {
 }
 
 footer {
+  background-color: #2539cd; /* Mismo color que el encabezado */
+  color: white;
+  text-align: center;
+  padding: 2em 0; /* Espaciado superior e inferior */
   display: flex;
-  flex-direction: column; /* Cambia a columna para móviles */
-  align-items: center; /* Centraliza los ítems */
+  flex-direction: column; /* Inicialmente en columna */
+  align-items: center; /* Centra el contenido */
 }
+
+footer div {
+  margin: 10px 0; /* Espaciado entre los divs */
+}
+
+@media (min-width: 768px) {
+  footer {
+    flex-direction: row; /* Cambiar a fila en pantallas más grandes */
+    justify-content: space-around; /* Espaciado uniforme entre columnas */
+  }
+
+  footer div {
+    flex: 1; /* Cada div ocupa el mismo espacio */
+    text-align: center; /* Alineación a la izquierda */
+    padding: 0 20px; /* Padding lateral para separación */
+  }
+}
+
 @media (max-width: 768px) {
   .product {
     flex: 1 1 calc(45% - 20px); /* Dos productos por fila en tablets */
@@ -202,5 +247,56 @@ footer {
 @media (max-width: 480px) {
   .product {
     flex: 1 1 100%; /* Un producto por fila en móviles */
+  }
+}
+
+.menu-icon {
+  display: none; /* Oculta el icono del menú por defecto */
+}
+
+@media (max-width: 650px) {
+  .menu-icon {
+    display: flex; /* Muestra el icono del menú en pantallas pequeñas */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    font-size: 24px; /* Tamaño del icono */
+    color: white; /* Color del icono */
+    margin-left: auto; /* Alinea el icono a la derecha */
+    padding: 0 20px; /* Espaciado a los lados del icono */
+  }
+
+  .nav-links {
+    display: none; /* Oculta los enlaces inicialmente en móviles */
+    flex-direction: column; /* Apila los enlaces en columna */
+    background-color: #2539cd; /* Aplica el fondo igual al header */
+    position: absolute;
+    top: 60px; /* Ajusta según sea el tamaño de tu header */
+    left: 0;
+    right: 0;
+    z-index: 1; /* Asegura que el menú esté por encima del contenido */
+  }
+
+  .nav-links.active {
+    display: flex; /* Muestra los enlaces cuando están activos */
+  }
+
+  .nav-links a {
+    margin: 10px 0; /* Espaciado entre enlaces en columna */
+  }
+}
+
+@media (max-width: 520px) {
+  .modal-content {
+    flex-direction: column; /* Cambia a disposición en columna */
+    align-items: center; /* Alinea los elementos en el centro */
+  }
+
+  .modal-content label,
+  .modal-content select,
+  .modal-content input,
+  .modal-content button {
+    width: 100%; /* Cada elemento ocupará todo el ancho disponible */
+    margin: 10px 0; /* Espacio vertical entre los elementos */
   }
 }

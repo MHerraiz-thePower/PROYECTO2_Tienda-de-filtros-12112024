@@ -169,15 +169,25 @@ const clearFiltersBtn = document.getElementById('clearFilters')
 const categorySelect = document.getElementById('category')
 const priceInput = document.getElementById('price')
 
+// Función para obtener productos aleatorios
+const getRandomProducts = (num) => {
+  const shuffled = products.sort(() => 0.5 - Math.random())
+  return shuffled.slice(0, num)
+}
+
 // Función para renderizar productos
 const renderProducts = (filteredProducts) => {
   productList.innerHTML = ''
 
-  // Verificar si hay productos filtrados
   if (filteredProducts.length === 0) {
-    return // No hay productos para mostrar
-  } else {
-    filteredProducts.forEach((product) => {
+    const suggestionMessage = document.createElement('div')
+    suggestionMessage.className = 'suggestion-message'
+    suggestionMessage.innerHTML =
+      '<p>No se encontraron productos con esos filtros. Aquí tienes algunos sugeridos:</p>'
+    productList.appendChild(suggestionMessage) // Muestra el mensaje de sugerencias
+
+    const suggestedProducts = getRandomProducts(3) // Obtiene 3 productos aleatorios
+    suggestedProducts.forEach((product) => {
       const productElement = document.createElement('div')
       productElement.className = 'product'
       productElement.innerHTML = `
@@ -185,10 +195,25 @@ const renderProducts = (filteredProducts) => {
         <h3>${product.name}</h3>
         <p>Categoría: ${product.category}</p>
         <p>Precio: ${product.price}€</p>
-        <a href="#comprar" class="buy-link">COMPRAR</a>` // Enlace "COMPRAR" agregado
+        <a href="#comprar" class="buy-link">COMPRAR</a>
+      `
       productList.appendChild(productElement)
     })
+    return // Termina la ejecución de la función para evitar mostrar productos filtrados
   }
+
+  filteredProducts.forEach((product) => {
+    const productElement = document.createElement('div')
+    productElement.className = 'product'
+    productElement.innerHTML = `
+      <img src="${product.image}" alt="${product.name}" />
+      <h3>${product.name}</h3>
+      <p>Categoría: ${product.category}</p>
+      <p>Precio: ${product.price}€</p>
+      <a href="#comprar" class="buy-link">COMPRAR</a>
+    `
+    productList.appendChild(productElement)
+  })
 }
 
 // Muestra y oculta el modal de filtros
@@ -219,17 +244,21 @@ applyFiltersBtn.onclick = () => {
   })
 
   renderProducts(filteredProducts)
-  filtersModal.style.display = 'none' // Cerrar el modal después de aplicar filtros
+  filtersModal.style.display = 'none' // Cierra el modal después de aplicar filtros
 }
 
 // Limpiar filtros
 clearFiltersBtn.onclick = () => {
   categorySelect.value = ''
   priceInput.value = ''
-  renderProducts(products) // Muestra todos los productos
+  renderProducts(products)
 }
-
 // Inicializa la lista de productos al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts(products)
 })
+
+document.getElementById('menuIcon').onclick = function () {
+  const navLinks = document.querySelector('.nav-links')
+  navLinks.classList.toggle('active') // Alterna la visibilidad del menú
+}
